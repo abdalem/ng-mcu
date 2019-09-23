@@ -1,27 +1,46 @@
 # AngularStarterKit
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
+Angular application starter kit including docker and workflow based on angular-cli, best pratices, angular styleguide, the community and my personal experience.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Getting Started
 
-## Code scaffolding
+You have three ways to start the project:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Without Docker
+Make sur you have Node, NPM and the Angular CLI installed globally. Then, you can run `npm install` and `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Build
+## With Docker
+Install docker (see the official docs) and docker-compose. Then, go on docker-compose.yml and uncomment:
+```
+#docker-compose.yml
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+ports:
+  - 100:4200
+```
 
-## Running unit tests
+run `docker-compose up` and navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## With Docker and Nginx reverse proxy
+Install docker (see the official docs) and docker-compose. Then, go on docker-compose.yml and uncomment:
+```
+#docker-compose.yml
 
-## Running end-to-end tests
+#if you already have a started instance of jwilder/nginx-proxy. Bind to the appropriate network
+networks:
+  default:
+    external:
+      name: nginx-proxy #change it if you need
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+#if you do not have one
+nginx-proxy:
+  image: jwilder/nginx-proxy
+  ports:
+    - "80:80"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+```
 
-## Further help
+Update your hosts files and add `127.0.0.1       angular.starter-kit.local`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+run `docker-compose up` and navigate to `http://angular.starter-kit.local/`. The app will automatically reload if you change any of the source files.

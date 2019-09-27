@@ -1,17 +1,18 @@
 version: '3.5'
 services:
-  client:
-    container_name: angular-starter-kit
+  ng-mcu:
+    container_name: ng-mcu
     image: abdalem/angular:8.3.5
     # ports:
     #   - 4200:4200
     volumes:
       - ./:/var/www
     environment:
-      VIRTUAL_HOST: "angular.starter-kit.local"
+      VIRTUAL_HOST: "ng-mcu.local"
+      MARVEL_API_KEY: "PUT_HERE_YOUR_MARVEL_API_KEY"
     expose:
       - "4200"
-    command: ng serve --host 0.0.0.0 --publicHost angular.starter-kit.local
+    command: ng serve --host 0.0.0.0 --publicHost ng-mcu.local
   # nginx-proxy:
   #   image: jwilder/nginx-proxy
   #   ports:

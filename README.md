@@ -1,10 +1,10 @@
 # NG-MCU
 
-Angular application based on my angular-starter-kit and marvel API.
+Angular application based on my [angular-starter-kit](https://github.com/abdalem/angular-starter-kit) and [marvel API](https://developer.marvel.com/).
 
 # Before Getting Started
 
-You will have to registrer and get an API key from the marvel database https://developer.marvel.com/. Then, add it to `docker-compose.yml` like this:
+You will have to registrer and get an API key from the [marvel API](https://developer.marvel.com/). Then, add it to `docker-compose.yml` like this:
 
 ```yml
   environment:

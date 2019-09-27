@@ -1,6 +1,6 @@
 # NG-MCU
 
-Angular application based on my angular-starter-kit.
+Angular application based on my angular-starter-kit and marvel API.
 
 # Before Getting Started
 
